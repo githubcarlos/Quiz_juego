@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <meta charset="UTF-8">
+      <title>autor</title>
+      <link rel='stylesheet' href='/stylesheets/styleCarlos.css' />
+      <script type="text/javascript">
+      function startTime(){
+      today=new Date();
+      h=today.getHours();
+      m=today.getMinutes();
+      s=today.getSeconds();
+      m=checkTime(m);
+      s=checkTime(s);
+      document.getElementById('reloj').innerHTML=h+":"+m+":"+s;
+      t=setTimeout('startTime()',500);}
+      function checkTime(i)
+      {if (i<10) {i="0" + i;}return i;}
+      window.onload=function(){startTime();}
+      </script>
+    </head>
+    
+    <body>
+      <header>
+        <h1>¡Bienvenido a la Web de Carlos!</h1>
+      </header>
+      <div class= "caja">
+        <aside> 
+          <iframe class="youtube-player" type="text/html" width="640" height="385" 
+            src="http://www.youtube.com/embed/M0jmSsQ5ptw" frameborder="0"></iframe>
+        </aside>
+        <article>
+          <h2> Aqui tienes al autor del Quiz:
+          <strong>Carlos Fernandez</strong> 
+          </h2>
+
+          <article1>
+            <HR> 
+              <h2> <strong>SI DESEA VOLVER AL QUIZ:</strong>  
+                <a href="/question?answer=<%= answer %>"> Pinche aqui</a>
+              </h2>
+            </HR>
+          </article1>
+        </article>
+        
+        <footer> 
+          <p2> Carlos Fernandez <br/> <a href="mailto:carlos.fernandezc@alumnos.upm.es"> 
+              <em>carlos.fernandezc@alumnos.upm.es</em> </a>
+          </p2>
+          <p id="reloj"> incluir fecha y hora </p>
+              <script type="text/javascript">
+              //<![CDATA[
+              var date = new Date();
+              var d  = date.getDate();
+              var day = (d < 10) ? '0' + d : d;
+              var m = date.getMonth() + 1;
+              var month = (m < 10) ? '0' + m : m;
+              var yy = date.getYear();
+              var year = (yy < 1000) ? yy + 1900 : yy;
+              document.write(day + "/" + month + "/" + year);
+              //]]>
+              </script>
+        </footer>
+      </div>
+    </body>
+</html>
