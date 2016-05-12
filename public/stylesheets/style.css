@@ -6,6 +6,12 @@
 body {
   font: 16px Georgia, serif;
   color: white;
+  background: url(/images/fondo.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  margin-top: 200px;
 }
 
 .page {
@@ -33,3 +39,56 @@ section { text-align: left; }
 footer { text-align: center; }
 
 nav a { margin: 0px 10px 0px 0px; }
+
+header.tituloAutor {
+    margin-bottom: 20px;
+}
+
+header.tituloAutor {
+    margin-bottom: 20px;
+}
+
+.cuerpoAutor {
+    flex-direction: row;
+    display: flex;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.divAutor1 {
+    flex-basis: 50%;
+    background-color: rgb(236, 253, 234);
+    border-width: thick;
+    border-style: groove;
+    border-radius: 20px;
+    padding-left: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 5px;
+    text-align: justify;
+    margin-right: 5px;
+
+}
+
+.divAutor2 {
+    flex-basis: 50%;
+    background-color: rgb(236, 253, 234);
+    border-width: thick;
+    border-style: groove;
+    border-radius: 20px;
+    padding-left: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 5px;
+    text-align: justify;
+    margin-left: 5px;
+}
+
+h3.tituloCuerpoAutor {
+    text-align: center;
+}
+
+p.enlaceCuerpoAutor {
+    text-align: center;
+    margin-top: 10px;
+}
