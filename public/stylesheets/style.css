@@ -92,3 +92,19 @@ p.enlaceCuerpoAutor {
     text-align: center;
     margin-top: 10px;
 }
+
+footer.main {
+    clear: both;
+    position: inherit;
+    display: block;
+}
+
+.iniFooter {
+    float: left;
+    padding-left: 20px;
+}
+
+.finalFooter {
+    text-align: end;
+    padding-right: 20px;
+}
