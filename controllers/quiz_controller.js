@@ -15,3 +15,4 @@ exports.check = function(req, res, next){
 exports.author = function(req, res, next){
 	res.render('quizzes/author');
 };
+
