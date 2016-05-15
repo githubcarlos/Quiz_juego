@@ -6,8 +6,8 @@
     "start": "node ./bin/www"
   },
   "engines":{
-    "node":"0.10.x",
-    "npm": "1.4.x"
+    "node":"2.4.x",
+    "npm": "2.14.x"
   },
   "dependencies": {
     "express": "~4.9.0",
