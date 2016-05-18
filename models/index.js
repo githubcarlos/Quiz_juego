@@ -17,10 +17,10 @@ if (!process.env.DATABASE_URL) {
     storage = process.env.DATABASE_STORAGE || "";
 }
 
-var sequelize = new Sequelize(url, 
-	 						  { storage: storage,
-				              	omitNull: true 
-				              });
+var sequelize = new Sequelize(url, {
+                        storage: storage,
+                        omitNull: true 
+                    });
 
 // Importar la definicion de la tabla Quiz de quiz.js
 var Quiz = sequelize.import(path.join(__dirname,'quiz'));
