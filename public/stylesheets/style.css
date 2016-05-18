@@ -38,6 +38,7 @@ nav { text-align: center; }
 section { text-align: left; }
 footer { text-align: center; }
 
+<<<<<<< HEAD
 nav a { margin: 0px 10px 0px 0px; }
 
 header.tituloAutor {
@@ -108,3 +109,6 @@ footer.main {
     text-align: end;
     padding-right: 20px;
 }
+=======
+nav a { margin: 0px 10px 0px 0px; }
+>>>>>>> 1dbcb81600dc9553698447ca31b70b84427c29bd
