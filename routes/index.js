@@ -8,9 +8,11 @@ router.get('/', function(req, res) {
   res.render('index');
 });
 
-router.get('/question', quizController.question);
+// Definición de rutas de /quizzes
+router.get('/quizzes',                     quizController.index);
+router.get('/quizzes/:quizId(\\d+)',       quizController.show);
+router.get('/quizzes/:quizId(\\d+)/check', quizController.check);
 
-router.get('/check',    quizController.check);
 router.get('/author',   quizController.author);
 
 module.exports = router;
