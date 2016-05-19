@@ -35,7 +35,7 @@ exports.show = function(req, res, next) {
 
 
 // GET /quizzes/:id/check
-exports.check = function(req, res next) {
+exports.check = function(req, res, next) {
 	var answer = req.query.answer || '';
 	var result = answer === req.quiz.answer ? 'Correcta' : 'Incorrecta';
 	res.render('quizzes/result', { quiz: req.quiz, 
