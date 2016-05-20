@@ -70,8 +70,8 @@ exports.create = function(req, res, next) {
     .catch(function(error) {
 		req.flash('error', 'Error al crear un Quiz: '+error.message);
 		next(error);
-	}); 
-
+	});  
+};
 
 //GET /Author
 exports.author = function(req, res, next){
