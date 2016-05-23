@@ -1,0 +1,17 @@
+<div class="divBusquedaRealizada">
+	<p>
+	Busqueda: <mark><%= search %></mark>
+	</p>
+	<div class="encontrados">
+		<table>
+		  <% for (var i in quizzes) { %>        
+		     <tr>
+		        <td>
+		           <%= quizzes[i].question %>
+		        </td>
+		     </tr> 
+		  <% } %>
+		</table>
+	</div>
+	<p><a href="/quizzes"> Volver a las preguntas</a></p>
+</div>

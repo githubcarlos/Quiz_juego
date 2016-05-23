@@ -18,15 +18,37 @@ exports.load = function(req, res, next, quizId) {
 
 // GET /quizzes
 exports.index = function(req, res, next) {
-	models.Quiz.findAll()
+	if(req.query.search){
+		var search = req.query.search;
+		busqueda1 = "%" + search.replace("","%") +"%";
+        models.Quiz.findAll({where: ["question like ?", busqueda1]})
 		.then(function(quizzes) {
-			res.render('quizzes/index.ejs', { quizzes: quizzes});
+			res.render('quizzes/busqueda.ejs', { quizzes: quizzes, search:search});
+		})
+		.catch(function(error) {
+			next(error);
+		}); 
+	}else if(req.params.format == "json"){
+	    models.Quiz.findAll()
+		.then(function(quizzes) {
+			res.send(JSON.stringify(quizzes));
 		})
 		.catch(function(error) {
 			next(error);
 		});
+	}else if(req.params.format !== "json" && req.params.format !== undefined){
+		res.send('Not Acceptable');
+	}else{
+		var busqueda1 = req.params.format;
+		var search = req.query.search;
+	models.Quiz.findAll()
+		.then(function(quizzes) {
+			res.render('quizzes/index.ejs', { quizzes: quizzes, search: search});
+		})
+		.catch(function(error) {
+			next(error);
+		});}
 };
-
 
 // GET /quizzes/:id
 exports.show = function(req, res, next) {
