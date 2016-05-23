@@ -37,26 +37,31 @@ exports.index = function(req, res, next) {
 			next(error);
 		});
 	}else if(req.params.format !== "json" && req.params.format !== undefined){
-		res.send('Not Acceptable');
+		res.send('No aceptado');
 	}else{
 		var busqueda1 = req.params.format;
 		var search = req.query.search;
-	models.Quiz.findAll()
-		.then(function(quizzes) {
-			res.render('quizzes/index.ejs', { quizzes: quizzes, search: search});
-		})
-		.catch(function(error) {
-			next(error);
-		});}
+		models.Quiz.findAll()
+			.then(function(quizzes) {
+				res.render('quizzes/index.ejs', { quizzes: quizzes, search: search});
+			})
+			.catch(function(error) {
+				next(error);
+			});
+	}
 };
 
 // GET /quizzes/:id
 exports.show = function(req, res, next) {
-
-	var answer = req.query.answer || '';
-
-	res.render('quizzes/show', {quiz: req.quiz,
-								answer: answer});
+	if(req.params.format=="json"){
+			res.send(JSON.stringify(req.quiz));
+	}else if (req.params.format !== "json" && req.params.format !== undefined){
+		res.send('No aceptado');
+	}else {
+		var answer = req.query.answer || '';
+		res.render('quizzes/show', {quiz: req.quiz,
+									answer: answer});
+	}
 };
 
 
