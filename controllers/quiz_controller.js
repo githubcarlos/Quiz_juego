@@ -1,9 +1,15 @@
 var models = require('../models');
 var Sequelize = require('sequelize');
+var cloudinary = require('cloudinary');
+var fs = require('fs');
+
+// Opciones para imagenes subidas a Cloudinary
+var cloudinary_image_options = { crop: 'limit', width: 200, height: 200, radius: 5, 
+                                 border: "3px_solid_blue", tags: ['core', 'quiz-2016'] };
 
 // Autoload el quiz asociado a :quizId
 exports.load = function(req, res, next, quizId) {
-	models.Quiz.findById(quizId, { include: [models.Comment]})
+	models.Quiz.findById(quizId, { include: [models.Comment, models.Attachment ]})
   		.then(function(quiz) {
       		if (quiz) {
         		req.quiz = quiz;
@@ -55,7 +61,7 @@ exports.index = function(req, res, next) {
 	}else{
 		var busqueda1 = req.params.format;
 		var search = req.query.search;
-		models.Quiz.findAll()
+		models.Quiz.findAll({ include: [ models.Attachment ] })
 			.then(function(quizzes) {
 				res.render('quizzes/index.ejs', { quizzes: quizzes, search: search});
 			})
