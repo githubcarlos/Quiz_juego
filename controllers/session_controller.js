@@ -2,6 +2,16 @@ var models = require('../models');
 var Sequelize = require('sequelize');
 var url = require('url');
 
+exports.autologout = function(req, res, next) {
+         if (req.session.user ) {
+            if (req.session.user.expires &&(req.session.user.expires < Date.now())) {
+               delete req.session.user;
+           } else {
+              req.session.user.expires = Date.now()+120000;
+} }
+    next(); 
+};
+
 /* Middleware: Se requiere hacer login. 
     Si el usuario ya hizo login anteriormente entonces existira 
     el objeto user en req.session, por lo que continuo con los demas 
