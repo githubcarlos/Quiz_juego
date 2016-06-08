@@ -26,9 +26,16 @@ exports.new = function(req, res, next) {
 
 // POST /quizes/:quizId/comments
 exports.create = function(req, res, next) {
+  var autor;
+  if(req.session.user){
+    autor = req.session.user.id;
+  }else {
+    autor=0;
+  }
   var comment = models.Comment.build(
       { text:   req.body.comment.text,          
-        QuizId: req.quiz.id
+        QuizId: req.quiz.id,
+        AuthorId: autor
       });
 
   comment.save()
@@ -52,9 +59,7 @@ exports.create = function(req, res, next) {
 
 // GET /quizzes/:quizId/comments/:commentId/accept
 exports.accept = function(req, res, next) {
-
   req.comment.accepted = true;
-
   req.comment.save(["accepted"])
     .then(function(comment) {
       req.flash('success', 'Comentario aceptado con éxito.');

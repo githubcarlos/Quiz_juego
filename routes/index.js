@@ -67,6 +67,6 @@ router.put('/quizzes/:quizId(\\d+)/comments/:commentId(\\d+)/accept',
 	                                              commentController.accept);
 
 //GET author page
-router.get('/author',   quizController.author);
+router.get('/author', sessionController.autologout, quizController.author);
 
 module.exports = router;

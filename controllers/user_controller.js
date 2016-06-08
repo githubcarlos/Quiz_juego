@@ -133,3 +133,20 @@ exports.destroy = function(req, res, next) {
             next(error); 
         });
 };
+
+/*
+* Autenticar un usuario: Comprobar si user esta registrado en users
+* Devuelve un promise el cual busca el usuario logueado y comprueba su password.
+* Si todo es correcto promise devuelve un objeto con el User.
+* Si hay falla la autenticacion o hay errores promise falla
+*/
+exports.autenticar = function(login, password) {
+    return models.User.findOne({where: {username: login}})
+        .then(function(user) {
+           if (user && user.verifyPassword (password)) {
+               return user;
+            }else {
+                throw new Error('Autenticación fallida.');
+            }
+        });
+};

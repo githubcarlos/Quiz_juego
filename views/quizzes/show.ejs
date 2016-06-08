@@ -5,6 +5,12 @@
       Pregunta: <%= quiz.question %>
     </p>
 
+    <% if (quiz.Attachment) { %>
+      <img src="<%= quiz.Attachment.url %>" />
+    <% } else { %> 
+      <img src="/images/pregunta.png" width="500px" />
+    <% } %>
+
     <p>
       <input type="text" name="answer" value="<%= answer %>" placeholder="Respuesta" />
       <input type="submit" value="Comprobar">
@@ -23,13 +29,17 @@
 <ul>
   <% for (var i in quiz.Comments) { 
        var comment = quiz.Comments[i];
-       if (comment.accepted) { %>
-           <li> <%= comment.text %> </li>
-       <% } else if (session.user && (session.user.isAdmin || (quiz.AuthorId === session.user.id))) { %>
-           <li> <%= comment.text %> </li>
-           <a href="/quizzes/<%= quiz.id %>/comments/<%= comment.id %>/accept?_method=PUT">
-              <button>Aceptar</button>
-           </a>
+       var user1;
+       if (comment.accepted) {
+          for (var n in usuarios) {
+            if(usuarios[n].id === comment.AuthorId){ user1 = usuarios[n].username}} %>
+            <li> <%= comment.text %> Autor: <%= user1 %></li>
+          <% } else if (session.user && 
+                          (session.user.isAdmin || (quiz.AuthorId === session.user.id))) { %>
+          <li> <%= comment.text %> </li>
+          <a href="/quizzes/<%= quiz.id %>/comments/<%= comment.id %>/accept?_method=PUT">
+            <button>Aceptar</button>
+          </a>
        <% } %>
   <% } %>
 </ul>
